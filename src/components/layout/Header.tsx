@@ -1,29 +1,36 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import { usePathname } from 'next/navigation'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Instagram } from 'lucide-react'
-import { INSTAGRAM_URL } from '@/lib/constants'
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, Instagram, Youtube } from "lucide-react";
+import { INSTAGRAM_URL, YOUTUBE_URL } from "@/lib/constants";
 
 const navItems = [
-  { href: '/', label: 'Work' },
-  { href: '/testimonials', label: 'Testimonials' },
-  { href: '/about', label: 'About' },
-]
+  { href: "/", label: "Work" },
+  { href: "/testimonials", label: "Testimonials" },
+  { href: "/about", label: "About" },
+];
 
 export const Header = () => {
-  const pathname = usePathname()
-  const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-black/60 to-transparent">
       <nav className="container mx-auto px-6">
         <div className="flex h-24 items-center justify-between">
           <Link href="/" className="relative h-14 w-20">
-            <Image src="/logoWhite.png" alt="AK1Photography" fill sizes="80px" className="object-contain" priority />
+            <Image
+              src="/logoWhite.png"
+              alt="AK1Photography"
+              fill
+              sizes="80px"
+              className="object-contain"
+              priority
+            />
           </Link>
 
           <div className="hidden items-center gap-10 md:flex">
@@ -32,7 +39,9 @@ export const Header = () => {
                 key={item.href}
                 href={item.href}
                 className={`relative py-2 text-sm font-normal tracking-wider uppercase transition-colors ${
-                  pathname === item.href ? 'text-gold' : 'text-white/80 hover:text-white'
+                  pathname === item.href
+                    ? "text-gold"
+                    : "text-white/80 hover:text-white"
                 }`}
               >
                 {item.label}
@@ -53,6 +62,15 @@ export const Header = () => {
             >
               <Instagram className="h-5 w-5" />
             </a>
+            <a
+              href={YOUTUBE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/60 transition-colors hover:text-gold"
+              aria-label="YouTube"
+            >
+              <Youtube className="h-5 w-5" />
+            </a>
           </div>
 
           <button
@@ -63,7 +81,6 @@ export const Header = () => {
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
-
       </nav>
 
       <AnimatePresence>
@@ -86,14 +103,14 @@ export const Header = () => {
                     href={item.href}
                     onClick={() => setIsOpen(false)}
                     className={`text-xl font-light tracking-wider ${
-                      pathname === item.href ? 'text-gold' : 'text-white/70'
+                      pathname === item.href ? "text-gold" : "text-white/70"
                     }`}
                   >
                     {item.label}
                   </Link>
                 </motion.div>
               ))}
-              
+
               <motion.div
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -110,11 +127,21 @@ export const Header = () => {
                   <Instagram className="h-5 w-5" />
                   <span className="text-sm">Instagram</span>
                 </a>
+                <a
+                  href={YOUTUBE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center gap-2 text-white/50 transition-colors hover:text-gold"
+                >
+                  <Youtube className="h-5 w-5" />
+                  <span className="text-sm">YouTube</span>
+                </a>
               </motion.div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
     </header>
-  )
-}
+  );
+};

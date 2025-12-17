@@ -1,5 +1,5 @@
-import { Instagram, Mail } from "lucide-react";
-import { INSTAGRAM_URL } from "@/lib/constants";
+import { Instagram, Youtube } from "lucide-react";
+import { INSTAGRAM_URL, YOUTUBE_URL } from "@/lib/constants";
 
 export const Footer = () => (
   <footer className="border-t border-white/10 bg-black">
@@ -19,11 +19,13 @@ export const Footer = () => (
             <Instagram className="h-5 w-5" />
           </a>
           <a
-            href="mailto:hello@example.com"
+            href={YOUTUBE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-white/40 transition-colors hover:text-gold"
-            aria-label="Email"
+            aria-label="YouTube"
           >
-            <Mail className="h-5 w-5" />
+            <Youtube className="h-5 w-5" />
           </a>
         </div>
       </div>
