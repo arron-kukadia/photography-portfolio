@@ -70,16 +70,11 @@ const AboutPage = () => {
                   {aboutMe?.name}
                 </h2>
 
-                {aboutMe?.content?.html ? (
-                  <div
-                    className="prose prose-lg prose-invert prose-p:text-muted-foreground prose-p:leading-relaxed max-w-none"
-                    dangerouslySetInnerHTML={{ __html: aboutMe.content.html }}
-                  />
-                ) : aboutMe?.content?.text ? (
-                  <p className="text-lg leading-relaxed text-muted-foreground">
-                    {aboutMe.content.text}
+                {aboutMe?.content && (
+                  <p className="text-lg leading-relaxed text-muted-foreground whitespace-pre-line">
+                    {aboutMe.content}
                   </p>
-                ) : null}
+                )}
 
                 <div className="mt-10 flex items-center gap-6">
                   <a

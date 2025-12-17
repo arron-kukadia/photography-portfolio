@@ -26,16 +26,16 @@ export const GET_PORTFOLIO_IMAGES = gql`
   query GetPortfolioImages {
     portfolioImages(first: 1) {
       id
-      landscapes {
+      landscapes(first: 100) {
         url
       }
-      portraits {
+      portraits(first: 100) {
         url
       }
-      cityscapes {
+      cityscapes(first: 100) {
         url
       }
-      wildlife {
+      wildlife(first: 100) {
         url
       }
     }
@@ -47,10 +47,7 @@ export const GET_TESTIMONIALS = gql`
     testimonials {
       id
       name
-      content {
-        html
-        text
-      }
+      content
       image {
         url
       }
@@ -63,10 +60,7 @@ export const GET_ABOUT_ME = gql`
     aboutMes(first: 1) {
       id
       name
-      content {
-        html
-        text
-      }
+      content
       image {
         url
       }

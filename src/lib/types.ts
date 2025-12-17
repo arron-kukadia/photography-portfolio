@@ -20,20 +20,14 @@ export type PortfolioImages = {
 export type Testimonial = {
   id: string
   name: string
-  content: {
-    html: string
-    text: string
-  }
+  content: string
   image: Asset
 }
 
 export type AboutMe = {
   id: string
   name: string
-  content: {
-    html: string
-    text: string
-  }
+  content: string
   image: Asset
 }
 

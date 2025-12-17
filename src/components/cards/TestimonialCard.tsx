@@ -37,9 +37,9 @@ export const TestimonialCard = ({ testimonial, index }: TestimonialCardProps) =>
       </div>
     </div>
 
-    {testimonial.content?.text && (
+    {testimonial.content && (
       <p className="text-muted-foreground leading-relaxed">
-        &ldquo;{testimonial.content.text}&rdquo;
+        &ldquo;{testimonial.content}&rdquo;
       </p>
     )}
   </motion.div>
