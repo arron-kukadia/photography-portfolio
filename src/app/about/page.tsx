@@ -67,7 +67,9 @@ const AboutPage = () => {
                 <h2 className={styles.name}>{aboutMe?.name}</h2>
 
                 {aboutMe?.content?.text && (
-                  <p className={styles.bio}>{aboutMe.content.text}</p>
+                  <p className={styles.bio}>
+                    {aboutMe.content.text.replace(/\\n/g, "\n")}
+                  </p>
                 )}
 
                 <div className={styles.socialLinks}>

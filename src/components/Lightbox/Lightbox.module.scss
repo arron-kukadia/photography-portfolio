@@ -31,9 +31,14 @@
 
 .navButton {
   position: absolute;
-  padding: 0.5rem;
-  color: rgba($foreground, 0.7);
-  @include transition(color);
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 0.1rem;
+  color: rgba($foreground, 0.9);
+
+  border-radius: 50%;
+  z-index: 60;
+  @include transition(all);
 
   &:hover {
     color: $foreground;
