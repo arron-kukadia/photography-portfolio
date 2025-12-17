@@ -1,0 +1,81 @@
+@use "variables" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --background: #{$background};
+  --foreground: #{$foreground};
+  --card: #{$card};
+  --card-foreground: #{$card-foreground};
+  --muted: #{$muted};
+  --muted-foreground: #{$muted-foreground};
+  --accent: #{$accent};
+  --accent-foreground: #{$accent-foreground};
+  --border: #{$border};
+  --primary: #{$primary};
+  --primary-foreground: #{$primary-foreground};
+  --gold: #{$gold};
+  --gold-light: #{$gold-light};
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: $background;
+  color: $foreground;
+  font-family: $font-sans;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+}
+
+// Scrollbar
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: $background;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $muted;
+  border-radius: 4px;
+
+  &:hover {
+    background: $muted-foreground;
+  }
+}
+
+// Container utility
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}

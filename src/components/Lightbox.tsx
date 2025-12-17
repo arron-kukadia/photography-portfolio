@@ -1,18 +1,19 @@
-'use client'
+"use client";
 
-import { motion, AnimatePresence } from 'framer-motion'
-import Image from 'next/image'
-import { X, ChevronLeft, ChevronRight } from 'lucide-react'
-import { Asset } from '@/lib/types'
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Asset } from "@/lib/types";
+import styles from "./Lightbox.module.scss";
 
 type LightboxProps = {
-  images: Asset[]
-  selectedIndex: number | null
-  onClose: () => void
-  onPrev: () => void
-  onNext: () => void
-  altPrefix: string
-}
+  images: Asset[];
+  selectedIndex: number | null;
+  onClose: () => void;
+  onPrev: () => void;
+  onNext: () => void;
+  altPrefix: string;
+};
 
 export const Lightbox = ({
   images,
@@ -28,37 +29,37 @@ export const Lightbox = ({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4"
+        className={styles.overlay}
         onClick={onClose}
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 text-white/70 transition-colors hover:text-white"
+          className={styles.closeButton}
           aria-label="Close"
         >
-          <X className="h-8 w-8" />
+          <X className={styles.closeIcon} />
         </button>
 
         <button
           onClick={(e) => {
-            e.stopPropagation()
-            onPrev()
+            e.stopPropagation();
+            onPrev();
           }}
-          className="absolute left-4 p-2 text-white/70 transition-colors hover:text-white"
+          className={`${styles.navButton} ${styles.prevButton}`}
           aria-label="Previous"
         >
-          <ChevronLeft className="h-10 w-10" />
+          <ChevronLeft className={styles.navIcon} />
         </button>
 
         <button
           onClick={(e) => {
-            e.stopPropagation()
-            onNext()
+            e.stopPropagation();
+            onNext();
           }}
-          className="absolute right-4 p-2 text-white/70 transition-colors hover:text-white"
+          className={`${styles.navButton} ${styles.nextButton}`}
           aria-label="Next"
         >
-          <ChevronRight className="h-10 w-10" />
+          <ChevronRight className={styles.navIcon} />
         </button>
 
         <motion.div
@@ -66,7 +67,7 @@ export const Lightbox = ({
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}
-          className="relative max-h-[90vh] max-w-[90vw]"
+          className={styles.imageWrapper}
           onClick={(e) => e.stopPropagation()}
         >
           <Image
@@ -74,15 +75,15 @@ export const Lightbox = ({
             alt={`${altPrefix} photo ${selectedIndex + 1}`}
             width={1400}
             height={1000}
-            className="max-h-[90vh] w-auto object-contain"
+            className={styles.image}
             priority
           />
         </motion.div>
 
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-sm text-white/50">
+        <div className={styles.counter}>
           {selectedIndex + 1} / {images.length}
         </div>
       </motion.div>
     )}
   </AnimatePresence>
-)
+);

@@ -1,0 +1,155 @@
+@use "../styles/variables" as *;
+
+// Hero section
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.heroImageWrapper {
+  position: absolute;
+  inset: 0;
+}
+
+.heroImage {
+  object-fit: cover;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.2),
+    $background
+  );
+}
+
+.heroContent {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.heroSubtitle {
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  color: $foreground;
+}
+
+.heroTitle {
+  margin-bottom: 1.5rem;
+  font-size: 3.75rem;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+
+  @include respond-to(md) {
+    font-size: 6rem;
+  }
+
+  @include respond-to(lg) {
+    font-size: 8rem;
+  }
+}
+
+.heroName {
+  color: $foreground;
+}
+
+.heroNameAccent {
+  display: block;
+  font-weight: 400;
+  color: $gold;
+}
+
+.heroTagline {
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  color: $foreground;
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: 3rem;
+}
+
+.scrollIcon {
+  width: 2rem;
+  height: 2rem;
+  color: rgba($foreground, 0.5);
+}
+
+// Collections section
+.collections {
+  position: relative;
+  background: $background;
+  padding: 4rem 1.5rem;
+
+  @include respond-to(md) {
+    padding: 8rem 1.5rem;
+  }
+}
+
+.collectionsContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.collectionsHeader {
+  margin-bottom: 2.5rem;
+  text-align: center;
+
+  @include respond-to(md) {
+    margin-bottom: 5rem;
+  }
+}
+
+.collectionsTitle {
+  margin-bottom: 1rem;
+  font-size: 2.25rem;
+  font-weight: 200;
+  letter-spacing: -0.02em;
+
+  @include respond-to(md) {
+    font-size: 3rem;
+  }
+}
+
+.collectionsAccent {
+  color: $gold;
+}
+
+.collectionsSubtitle {
+  max-width: 32rem;
+  margin: 0 auto;
+  color: $muted-foreground;
+}
+
+.collectionsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to(lg) {
+    gap: 1.5rem;
+  }
+}

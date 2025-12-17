@@ -1,0 +1,131 @@
+@use "../../styles/variables" as *;
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.cardSkeleton {
+  aspect-ratio: 4 / 5;
+  background: $muted;
+  @extend .pulse;
+}
+
+.imageSkeleton {
+  aspect-ratio: 1 / 1;
+  background: $muted;
+  @extend .pulse;
+}
+
+.testimonialSkeleton {
+  border-radius: 0.5rem;
+  border: 1px solid $border;
+  background: $card;
+  padding: 2rem;
+  @extend .pulse;
+}
+
+.testimonialAvatar {
+  margin-bottom: 1.5rem;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  background: $muted;
+}
+
+.testimonialLine {
+  height: 1rem;
+  background: $muted;
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem;
+
+  &.wide {
+    width: 75%;
+    margin-bottom: 1rem;
+  }
+
+  &.full {
+    width: 100%;
+  }
+
+  &.half {
+    width: 50%;
+    margin-bottom: 0;
+  }
+}
+
+// About skeleton
+.aboutSkeleton {
+  min-height: 100vh;
+  padding-top: 5rem;
+}
+
+.aboutContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem;
+}
+
+.aboutContent {
+  max-width: 56rem;
+  margin: 0 auto;
+}
+
+.aboutFlex {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  @include respond-to(md) {
+    flex-direction: row;
+  }
+}
+
+.aboutImage {
+  height: 24rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  background: $muted;
+  @extend .pulse;
+
+  @include respond-to(md) {
+    width: 50%;
+  }
+}
+
+.aboutTextWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.aboutTextLine {
+  background: $muted;
+  border-radius: 0.25rem;
+  @extend .pulse;
+
+  &.title {
+    height: 2.5rem;
+    width: 75%;
+  }
+
+  &.full {
+    height: 1rem;
+    width: 100%;
+  }
+
+  &.partial {
+    height: 1rem;
+    width: 66%;
+  }
+}

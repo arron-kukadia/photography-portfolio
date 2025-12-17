@@ -1,0 +1,58 @@
+@use "../../styles/variables" as *;
+
+.page {
+  min-height: 100vh;
+  background: $background;
+  padding-top: 8rem;
+}
+
+.section {
+  padding: 0 1.5rem 5rem;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 5rem;
+}
+
+.label {
+  margin-bottom: 1rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: $gold;
+}
+
+.title {
+  margin-bottom: 1.5rem;
+  font-size: 3rem;
+  font-weight: 200;
+  letter-spacing: -0.02em;
+
+  @include respond-to(md) {
+    font-size: 4.5rem;
+  }
+}
+
+.titleFaded {
+  display: block;
+  color: rgba($foreground, 0.5);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+
+  @include respond-to(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

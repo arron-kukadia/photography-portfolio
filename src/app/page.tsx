@@ -1,26 +1,27 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import Image from 'next/image'
-import { ChevronDown } from 'lucide-react'
-import { usePortfolioCards, useCoverImage } from '@/hooks/usePortfolio'
-import { PortfolioCard } from '@/components/cards/PortfolioCard'
-import { CardSkeleton } from '@/components/skeletons/CardSkeleton'
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { ChevronDown } from "lucide-react";
+import { usePortfolioCards, useCoverImage } from "@/hooks/usePortfolio";
+import { PortfolioCard } from "@/components/cards/PortfolioCard";
+import { CardSkeleton } from "@/components/skeletons/CardSkeleton";
+import styles from "./Home.module.scss";
 
 const Home = () => {
-  const { data: portfolioCards, isLoading } = usePortfolioCards()
-  const { data: coverImage } = useCoverImage()
-  const heroImage = coverImage?.image?.url || portfolioCards?.[0]?.image?.url
+  const { data: portfolioCards, isLoading } = usePortfolioCards();
+  const { data: coverImage } = useCoverImage();
+  const heroImage = coverImage?.image?.url || portfolioCards?.[0]?.image?.url;
 
   return (
     <div>
-      <section className="relative h-screen w-full overflow-hidden">
+      <section className={styles.hero}>
         {heroImage && (
           <motion.div
             initial={{ scale: 1.1 }}
             animate={{ scale: 1 }}
-            transition={{ duration: 1.5, ease: 'easeOut' }}
-            className="absolute inset-0"
+            transition={{ duration: 1.5, ease: "easeOut" }}
+            className={styles.heroImageWrapper}
           >
             <Image
               src={heroImage}
@@ -29,13 +30,13 @@ const Home = () => {
               priority
               quality={90}
               sizes="100vw"
-              className="object-cover"
+              className={styles.heroImage}
             />
           </motion.div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black" />
-        
-        <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
+        <div className={styles.heroOverlay} />
+
+        <div className={styles.heroContent}>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -45,52 +46,53 @@ const Home = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="mb-4 text-md font-semibold uppercase tracking-[0.4em] text-white/100"
+              className={styles.heroSubtitle}
             >
               Photography Portfolio
             </motion.p>
-            <h1 className="mb-6 text-6xl font-light tracking-tight md:text-8xl lg:text-9xl">
-              <span className="text-white">Arron</span>
-              <span className="block font-normal text-gold">Kukadia</span>
+            <h1 className={styles.heroTitle}>
+              <span className={styles.heroName}>Arron</span>
+              <span className={styles.heroNameAccent}>Kukadia</span>
             </h1>
-            <p className="mb-4 text-md font-semibold uppercase tracking-[0.4em] text-white/100">
+            <p className={styles.heroTagline}>
               Capturing the extraordinary in every frame
             </p>
           </motion.div>
-          
+
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.2 }}
-            className="absolute bottom-12"
+            className={styles.scrollIndicator}
           >
             <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              <ChevronDown className="h-8 w-8 text-white/50" />
+              <ChevronDown className={styles.scrollIcon} />
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      <section className="relative bg-background px-6 py-16 md:py-32">
-        <div className="container mx-auto">
+      <section className={styles.collections}>
+        <div className={styles.collectionsContainer}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-10 text-center md:mb-20"
+            className={styles.collectionsHeader}
           >
-            <h2 className="mb-4 text-4xl font-extralight tracking-tight md:text-5xl">
-              Featured <span className="text-gold">Collections</span>
+            <h2 className={styles.collectionsTitle}>
+              Featured{" "}
+              <span className={styles.collectionsAccent}>Collections</span>
             </h2>
-            <p className="mx-auto max-w-lg text-muted-foreground">
+            <p className={styles.collectionsSubtitle}>
               Explore my portfolio across different genres of photography
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-6">
+          <div className={styles.collectionsGrid}>
             {isLoading ? (
               <>
                 <CardSkeleton />
@@ -107,7 +109,7 @@ const Home = () => {
         </div>
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

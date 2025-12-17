@@ -1,68 +1,66 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { useParams } from 'next/navigation'
-import { motion } from 'framer-motion'
-import Image from 'next/image'
-import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
-import { useGenreImages, usePortfolioCards } from '@/hooks/usePortfolio'
-import { Lightbox } from '@/components/Lightbox'
-import { ImageSkeleton } from '@/components/skeletons/CardSkeleton'
-import { GenreType } from '@/lib/types'
+import { useState } from "react";
+import { useParams } from "next/navigation";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { useGenreImages, usePortfolioCards } from "@/hooks/usePortfolio";
+import { Lightbox } from "@/components/Lightbox";
+import { ImageSkeleton } from "@/components/skeletons/CardSkeleton";
+import { GenreType } from "@/lib/types";
+import styles from "./Genre.module.scss";
 
 const GenrePage = () => {
-  const params = useParams()
-  const genre = params.genre as string
-  const genreKey = genre === 'street' ? 'cityscapes' : genre as GenreType
-  
-  const { data: images, isLoading } = useGenreImages(genreKey)
-  const { data: cards } = usePortfolioCards()
-  const currentCard = cards?.find((card) => card.route === genre)
-  
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
+  const params = useParams();
+  const genre = params.genre as string;
+  const genreKey = genre === "street" ? "cityscapes" : (genre as GenreType);
+
+  const { data: images, isLoading } = useGenreImages(genreKey);
+  const { data: cards } = usePortfolioCards();
+  const currentCard = cards?.find((card) => card.route === genre);
+
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const handlePrev = () => {
     if (selectedIndex !== null && images) {
-      setSelectedIndex(selectedIndex === 0 ? images.length - 1 : selectedIndex - 1)
+      setSelectedIndex(
+        selectedIndex === 0 ? images.length - 1 : selectedIndex - 1
+      );
     }
-  }
+  };
 
   const handleNext = () => {
     if (selectedIndex !== null && images) {
-      setSelectedIndex(selectedIndex === images.length - 1 ? 0 : selectedIndex + 1)
+      setSelectedIndex(
+        selectedIndex === images.length - 1 ? 0 : selectedIndex + 1
+      );
     }
-  }
+  };
 
   return (
-    <div className="min-h-screen bg-background pt-32">
-      <section className="px-6 pb-16">
-        <div className="container mx-auto">
-          <Link
-            href="/"
-            className="mb-8 inline-flex items-center gap-2 text-xs uppercase tracking-wider text-white/40 transition-colors hover:text-gold"
-          >
-            <ArrowLeft className="h-4 w-4" />
+    <div className={styles.page}>
+      <section className={styles.headerSection}>
+        <div className={styles.container}>
+          <Link href="/" className={styles.backLink}>
+            <ArrowLeft className={styles.backIcon} />
             Back to Collections
           </Link>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            <p className="mb-2 text-xs uppercase tracking-[0.3em] text-gold">
-              Collection
-            </p>
-            <h1 className="text-5xl font-extralight tracking-tight md:text-7xl">
-              {currentCard?.genre || genre}
-            </h1>
+            <p className={styles.label}>Collection</p>
+            <h1 className={styles.title}>{currentCard?.genre || genre}</h1>
           </motion.div>
         </div>
       </section>
 
-      <section className="px-6 pb-20">
-        <div className="container mx-auto">
-          <div className="columns-1 gap-4 sm:columns-2 lg:columns-3 xl:columns-4">
+      <section className={styles.gallerySection}>
+        <div className={styles.container}>
+          <div className={styles.masonry}>
             {isLoading ? (
               <>
                 <ImageSkeleton />
@@ -80,11 +78,11 @@ const GenrePage = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.05 }}
-                  className="mb-4 break-inside-avoid"
+                  className={styles.masonryItem}
                 >
                   <button
                     onClick={() => setSelectedIndex(index)}
-                    className="group relative block w-full overflow-hidden bg-muted"
+                    className={styles.imageButton}
                   >
                     <Image
                       src={image.url}
@@ -92,9 +90,9 @@ const GenrePage = () => {
                       width={600}
                       height={800}
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                      className="w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className={styles.image}
                     />
-                    <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/20" />
+                    <div className={styles.imageOverlay} />
                   </button>
                 </motion.div>
               ))
@@ -114,7 +112,7 @@ const GenrePage = () => {
         />
       )}
     </div>
-  )
-}
+  );
+};
 
-export default GenrePage
+export default GenrePage;

@@ -1,0 +1,55 @@
+// Colors
+$background: #050505;
+$foreground: #ffffff;
+$card: #0a0a0a;
+$card-foreground: #ffffff;
+$muted: #1a1a1a;
+$muted-foreground: #888888;
+$accent: #111111;
+$accent-foreground: #ffffff;
+$border: #222222;
+$primary: #ffffff;
+$primary-foreground: #000000;
+$gold: #d4af37;
+$gold-light: #f4d03f;
+
+// Typography
+$font-sans: var(--font-geist-sans), system-ui, sans-serif;
+$font-mono: var(--font-geist-mono), monospace;
+
+// Breakpoints
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+
+// Mixins
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == sm {
+    @media (min-width: $breakpoint-sm) {
+      @content;
+    }
+  } @else if $breakpoint == md {
+    @media (min-width: $breakpoint-md) {
+      @content;
+    }
+  } @else if $breakpoint == lg {
+    @media (min-width: $breakpoint-lg) {
+      @content;
+    }
+  } @else if $breakpoint == xl {
+    @media (min-width: $breakpoint-xl) {
+      @content;
+    }
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin transition($properties: all, $duration: 0.3s, $timing: ease) {
+  transition: $properties $duration $timing;
+}

@@ -1,0 +1,158 @@
+@use "../../styles/variables" as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
+}
+
+.nav {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.navContent {
+  display: flex;
+  height: 6rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  position: relative;
+  height: 3.5rem;
+  width: 5rem;
+}
+
+.desktopNav {
+  display: none;
+  align-items: center;
+  gap: 2.5rem;
+
+  @include respond-to(md) {
+    display: flex;
+  }
+}
+
+.navLink {
+  position: relative;
+  padding: 0.5rem 0;
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba($foreground, 0.8);
+  @include transition(color);
+
+  &:hover {
+    color: $foreground;
+  }
+
+  &.active {
+    color: $gold;
+  }
+}
+
+.activeIndicator {
+  position: absolute;
+  bottom: -0.25rem;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: $gold;
+}
+
+.socialLink {
+  color: rgba($foreground, 0.6);
+  @include transition(color);
+
+  &:hover {
+    color: $gold;
+  }
+
+  &.instagram {
+    margin-left: 1rem;
+  }
+}
+
+.socialIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.menuButton {
+  padding: 0.5rem;
+  color: $foreground;
+
+  @include respond-to(md) {
+    display: none;
+  }
+}
+
+.menuIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+// Mobile menu
+.mobileMenu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 6rem;
+  z-index: 40;
+  border-top: 1px solid rgba($foreground, 0.1);
+  background: $background;
+  padding: 2rem 1.5rem;
+
+  @include respond-to(md) {
+    display: none;
+  }
+}
+
+.mobileMenuContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mobileNavLink {
+  font-size: 1.25rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: rgba($foreground, 0.7);
+
+  &.active {
+    color: $gold;
+  }
+}
+
+.mobileSocialSection {
+  margin-top: 1rem;
+  border-top: 1px solid rgba($foreground, 0.1);
+  padding-top: 1.5rem;
+}
+
+.mobileSocialLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba($foreground, 0.5);
+  @include transition(color);
+
+  &:hover {
+    color: $gold;
+  }
+
+  &.youtube {
+    margin-top: 1rem;
+  }
+}
+
+.mobileSocialText {
+  font-size: 0.875rem;
+}

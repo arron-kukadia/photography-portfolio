@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Instagram, Youtube } from "lucide-react";
 import { INSTAGRAM_URL, YOUTUBE_URL } from "@/lib/constants";
+import styles from "./Header.module.scss";
 
 const navItems = [
   { href: "/", label: "Work" },
@@ -19,36 +20,34 @@ export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-black/60 to-transparent">
-      <nav className="container mx-auto px-6">
-        <div className="flex h-24 items-center justify-between">
-          <Link href="/" className="relative h-14 w-20">
+    <header className={styles.header}>
+      <nav className={styles.nav}>
+        <div className={styles.navContent}>
+          <Link href="/" className={styles.logo}>
             <Image
               src="/logoWhite.png"
               alt="AK1Photography"
               fill
               sizes="80px"
-              className="object-contain"
+              style={{ objectFit: "contain" }}
               priority
             />
           </Link>
 
-          <div className="hidden items-center gap-10 md:flex">
+          <div className={styles.desktopNav}>
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative py-2 text-sm font-normal tracking-wider uppercase transition-colors ${
-                  pathname === item.href
-                    ? "text-gold"
-                    : "text-white/80 hover:text-white"
+                className={`${styles.navLink} ${
+                  pathname === item.href ? styles.active : ""
                 }`}
               >
                 {item.label}
                 {pathname === item.href && (
                   <motion.div
                     layoutId="activeNav"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gold"
+                    className={styles.activeIndicator}
                   />
                 )}
               </Link>
@@ -57,28 +56,32 @@ export const Header = () => {
               href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-4 text-white/60 transition-colors hover:text-gold"
+              className={`${styles.socialLink} ${styles.instagram}`}
               aria-label="Instagram"
             >
-              <Instagram className="h-5 w-5" />
+              <Instagram className={styles.socialIcon} />
             </a>
             <a
               href={YOUTUBE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/60 transition-colors hover:text-gold"
+              className={styles.socialLink}
               aria-label="YouTube"
             >
-              <Youtube className="h-5 w-5" />
+              <Youtube className={styles.socialIcon} />
             </a>
           </div>
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="p-2 text-white md:hidden"
+            className={styles.menuButton}
             aria-label="Toggle menu"
           >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isOpen ? (
+              <X className={styles.menuIcon} />
+            ) : (
+              <Menu className={styles.menuIcon} />
+            )}
           </button>
         </div>
       </nav>
@@ -89,9 +92,9 @@ export const Header = () => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute left-0 right-0 top-24 z-40 border-t border-white/10 bg-black px-6 py-8 md:hidden"
+            className={styles.mobileMenu}
           >
-            <div className="flex flex-col gap-6">
+            <div className={styles.mobileMenuContent}>
               {navItems.map((item, index) => (
                 <motion.div
                   key={item.href}
@@ -102,8 +105,8 @@ export const Header = () => {
                   <Link
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className={`text-xl font-light tracking-wider ${
-                      pathname === item.href ? "text-gold" : "text-white/70"
+                    className={`${styles.mobileNavLink} ${
+                      pathname === item.href ? styles.active : ""
                     }`}
                   >
                     {item.label}
@@ -115,27 +118,27 @@ export const Header = () => {
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 }}
-                className="mt-4 border-t border-white/10 pt-6"
+                className={styles.mobileSocialSection}
               >
                 <a
                   href={INSTAGRAM_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center gap-2 text-white/50 transition-colors hover:text-gold"
+                  className={styles.mobileSocialLink}
                 >
-                  <Instagram className="h-5 w-5" />
-                  <span className="text-sm">Instagram</span>
+                  <Instagram className={styles.socialIcon} />
+                  <span className={styles.mobileSocialText}>Instagram</span>
                 </a>
                 <a
                   href={YOUTUBE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsOpen(false)}
-                  className="flex mt-4 items-center gap-2 text-white/50 transition-colors hover:text-gold"
+                  className={`${styles.mobileSocialLink} ${styles.youtube}`}
                 >
-                  <Youtube className="h-5 w-5" />
-                  <span className="text-sm">YouTube</span>
+                  <Youtube className={styles.socialIcon} />
+                  <span className={styles.mobileSocialText}>YouTube</span>
                 </a>
               </motion.div>
             </div>

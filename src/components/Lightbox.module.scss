@@ -1,0 +1,75 @@
+@use "../styles/variables" as *;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.95);
+  padding: 1rem;
+}
+
+.closeButton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem;
+  color: rgba($foreground, 0.7);
+  @include transition(color);
+
+  &:hover {
+    color: $foreground;
+  }
+}
+
+.closeIcon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.navButton {
+  position: absolute;
+  padding: 0.5rem;
+  color: rgba($foreground, 0.7);
+  @include transition(color);
+
+  &:hover {
+    color: $foreground;
+  }
+}
+
+.prevButton {
+  left: 1rem;
+}
+
+.nextButton {
+  right: 1rem;
+}
+
+.navIcon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.imageWrapper {
+  position: relative;
+  max-height: 90vh;
+  max-width: 90vw;
+}
+
+.image {
+  max-height: 90vh;
+  width: auto;
+  object-fit: contain;
+}
+
+.counter {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.875rem;
+  color: rgba($foreground, 0.5);
+}

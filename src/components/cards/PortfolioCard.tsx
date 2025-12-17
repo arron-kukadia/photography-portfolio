@@ -1,14 +1,15 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-import Image from 'next/image'
-import { PortfolioCard as PortfolioCardType } from '@/lib/types'
+import { motion } from "framer-motion";
+import Link from "next/link";
+import Image from "next/image";
+import { PortfolioCard as PortfolioCardType } from "@/lib/types";
+import styles from "./PortfolioCard.module.scss";
 
 type PortfolioCardProps = {
-  card: PortfolioCardType
-  index: number
-}
+  card: PortfolioCardType;
+  index: number;
+};
 
 export const PortfolioCard = ({ card, index }: PortfolioCardProps) => (
   <motion.div
@@ -17,26 +18,23 @@ export const PortfolioCard = ({ card, index }: PortfolioCardProps) => (
     viewport={{ once: true }}
     transition={{ duration: 0.7, delay: index * 0.15 }}
   >
-    <Link href={`/portfolio/${card.route}`} className="group relative block">
-      <div className="relative aspect-[4/3] overflow-hidden">
+    <Link href={`/portfolio/${card.route}`} className={styles.card}>
+      <div className={styles.imageWrapper}>
         <Image
           src={card.image.url}
           alt={card.genre}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
-          className="object-cover transition-all duration-700 group-hover:scale-110"
+          className={styles.image}
         />
-        <div className="absolute inset-0 bg-black/30 transition-all duration-500 group-hover:bg-black/50" />
-        
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <h3 className="text-3xl font-light text-white md:text-4xl">
-              {card.genre}
-            </h3>
-            <div className="mx-auto mt-4 h-px w-0 bg-gold transition-all duration-500 group-hover:w-24" />
+        <div className={styles.overlay} />
+        <div className={styles.content}>
+          <div className={styles.textWrapper}>
+            <h3 className={styles.title}>{card.genre}</h3>
+            <div className={styles.underline} />
           </div>
         </div>
       </div>
     </Link>
   </motion.div>
-)
+);
