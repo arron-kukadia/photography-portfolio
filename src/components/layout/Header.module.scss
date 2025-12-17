@@ -6,7 +6,16 @@
   left: 0;
   right: 0;
   z-index: 50;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), transparent);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.8) 90%,
+    transparent 100%
+  );
+
+  &.transparent {
+    background: transparent;
+  }
 }
 
 .nav {

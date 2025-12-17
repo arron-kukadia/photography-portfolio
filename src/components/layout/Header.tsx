@@ -19,8 +19,10 @@ export const Header = () => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
+  const isHome = pathname === "/";
+
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${isHome ? styles.transparent : ""}`}>
       <nav className={styles.nav}>
         <div className={styles.navContent}>
           <Link href="/" className={styles.logo}>
