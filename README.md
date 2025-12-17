@@ -6,6 +6,10 @@ Modern photography portfolio built with **Next.js App Router**, **TypeScript**, 
 
 </div>
 
+## ✨ TODO
+- add tests
+- consider pagination of portfolio pages (images)
+
 ## ✨ Features
 
 - Dynamic hero that pulls the latest cover image from Hygraph
