@@ -39,7 +39,7 @@ const AboutPage = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="relative w-full max-w-md lg:w-1/2"
               >
-                <div className="relative aspect-[3/4] overflow-hidden rounded-lg bg-muted">
+                <div className="relative z-10 aspect-[3/4] overflow-hidden rounded-lg bg-muted">
                   {aboutMe?.image && (
                     <Image
                       src={aboutMe.image.url}
@@ -51,14 +51,14 @@ const AboutPage = () => {
                     />
                   )}
                 </div>
-                <div className="absolute -bottom-4 -right-4 -z-10 h-full w-full rounded-lg border border-gold/30" />
+                <div className="pointer-events-none absolute -bottom-4 -right-4 h-full w-full rounded-lg border border-gold" />
               </motion.div>
 
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="flex-1 lg:pt-8"
+                className="flex-1"
               >
                 <div className="mb-6 flex items-center gap-3">
                   <Camera className="h-6 w-6 text-gold" />

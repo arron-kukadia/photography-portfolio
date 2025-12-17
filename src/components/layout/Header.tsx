@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Instagram } from 'lucide-react'
@@ -21,8 +22,8 @@ export const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-black/60 to-transparent">
       <nav className="container mx-auto px-6">
         <div className="flex h-24 items-center justify-between">
-          <Link href="/" className="text-xl font-extralight tracking-[0.2em] text-white uppercase">
-            AK
+          <Link href="/" className="relative h-14 w-20">
+            <Image src="/logoWhite.png" alt="AK1Photography" fill sizes="80px" className="object-contain" priority />
           </Link>
 
           <div className="hidden items-center gap-10 md:flex">
