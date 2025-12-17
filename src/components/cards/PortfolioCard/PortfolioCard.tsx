@@ -16,7 +16,7 @@ export const PortfolioCard = ({ card, index }: PortfolioCardProps) => (
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
-    transition={{ duration: 0.7, delay: index * 0.15 }}
+    transition={{ duration: 0.2, delay: index * 0.15 }}
   >
     <Link href={`/portfolio/${card.route}`} className={styles.card}>
       <div className={styles.imageWrapper}>

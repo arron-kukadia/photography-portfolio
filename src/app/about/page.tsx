@@ -19,7 +19,7 @@ const AboutPage = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.4 }}
         >
           <h1 className={styles.title}>
             About <span className={styles.titleAccent}>Me</span>
@@ -35,7 +35,7 @@ const AboutPage = () => {
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
+                transition={{ duration: 0.4, delay: 0.2 }}
                 className={styles.imageSection}
               >
                 <div className={styles.imageWrapper}>
@@ -56,7 +56,7 @@ const AboutPage = () => {
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
+                transition={{ duration: 0.4, delay: 0.4 }}
                 className={styles.textSection}
               >
                 <div className={styles.role}>

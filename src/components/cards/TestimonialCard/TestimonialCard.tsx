@@ -19,7 +19,7 @@ export const TestimonialCard = ({
     initial={{ opacity: 0 }}
     whileInView={{ opacity: 1 }}
     viewport={{ once: true }}
-    transition={{ duration: 0.6, delay: index * 0.05, ease: "easeOut" }}
+    transition={{ duration: 0.4, delay: index * 0.05, ease: "easeOut" }}
     className={styles.card}
   >
     <Quote className={styles.quoteIcon} />
