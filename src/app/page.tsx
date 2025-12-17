@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { usePortfolioCards, useCoverImage } from "@/hooks/usePortfolio";
-import { PortfolioCard } from "@/components/cards/PortfolioCard";
-import { CardSkeleton } from "@/components/skeletons/CardSkeleton";
+import { PortfolioCard } from "@/components/cards/PortfolioCard/PortfolioCard";
+import { CardSkeleton } from "@/components/skeletons/CardSkeleton/CardSkeleton";
 import styles from "./Home.module.scss";
 
 const Home = () => {

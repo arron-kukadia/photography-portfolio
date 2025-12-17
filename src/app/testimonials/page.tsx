@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import { useTestimonials } from "@/hooks/useTestimonials";
-import { TestimonialCard } from "@/components/cards/TestimonialCard";
-import { TestimonialSkeleton } from "@/components/skeletons/CardSkeleton";
+import { TestimonialCard } from "@/components/cards/TestimonialCard/TestimonialCard";
+import { TestimonialSkeleton } from "@/components/skeletons/CardSkeleton/CardSkeleton";
 import styles from "./Testimonials.module.scss";
 
 const TestimonialsPage = () => {

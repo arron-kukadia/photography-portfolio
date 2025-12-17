@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { Camera, Instagram, Mail } from "lucide-react";
 import { useAboutMe } from "@/hooks/useAboutMe";
-import { AboutSkeleton } from "@/components/skeletons/CardSkeleton";
+import { AboutSkeleton } from "@/components/skeletons/CardSkeleton/CardSkeleton";
 import { INSTAGRAM_URL } from "@/lib/constants";
 import styles from "./About.module.scss";
 

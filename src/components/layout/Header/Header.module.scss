@@ -1,4 +1,4 @@
-@use "../../styles/variables" as *;
+@use "../../../styles/variables" as *;
 
 .header {
   position: fixed;
@@ -51,10 +51,10 @@
   position: relative;
   padding: 0.5rem 0;
   font-size: 0.875rem;
-  font-weight: 400;
+  font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: rgba($foreground, 0.8);
+  color: $foreground;
   @include transition(color);
 
   &:hover {

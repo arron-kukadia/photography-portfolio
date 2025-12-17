@@ -7,8 +7,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { useGenreImages, usePortfolioCards } from "@/hooks/usePortfolio";
-import { Lightbox } from "@/components/Lightbox";
-import { ImageSkeleton } from "@/components/skeletons/CardSkeleton";
+import { Lightbox } from "@/components/Lightbox/Lightbox";
+import { ImageSkeleton } from "@/components/skeletons/CardSkeleton/CardSkeleton";
 import { GenreType } from "@/lib/types";
 import styles from "./Genre.module.scss";
 
