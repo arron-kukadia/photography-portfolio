@@ -66,15 +66,6 @@
   }
 }
 
-.activeIndicator {
-  position: absolute;
-  bottom: -0.25rem;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: $gold;
-}
-
 .socialLink {
   color: rgba($foreground, 0.6);
   @include transition(color);

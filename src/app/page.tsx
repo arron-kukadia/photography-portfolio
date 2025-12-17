@@ -15,7 +15,7 @@ const Home = () => {
 
   return (
     <div>
-      <section className={styles.hero}>
+      <section className={styles.hero} data-hero-section>
         {heroImage && (
           <motion.div
             initial={{ scale: 1.1 }}

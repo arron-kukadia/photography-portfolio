@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Menu, X, Instagram, Youtube } from "lucide-react";
 import { INSTAGRAM_URL, YOUTUBE_URL } from "@/lib/constants";
+import { MobileMenu } from "./MobileMenu";
 import styles from "./Header.module.scss";
 
 const navItems = [
@@ -18,11 +19,43 @@ const navItems = [
 export const Header = () => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const [hasHeroPassed, setHasHeroPassed] = useState(false);
 
   const isHome = pathname === "/";
 
+  useEffect(() => {
+    if (!isHome) {
+      return;
+    }
+
+    const heroElement = document.querySelector<HTMLElement>(
+      "[data-hero-section]"
+    );
+
+    if (!heroElement) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setHasHeroPassed(!entry.isIntersecting);
+      },
+      { threshold: 0.01 }
+    );
+
+    observer.observe(heroElement);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [isHome]);
+
   return (
-    <header className={`${styles.header} ${isHome ? styles.transparent : ""}`}>
+    <header
+      className={`${styles.header} ${
+        isHome && !hasHeroPassed ? styles.transparent : ""
+      }`}
+    >
       <nav className={styles.nav}>
         <div className={styles.navContent}>
           <Link href="/" className={styles.logo}>
@@ -46,12 +79,6 @@ export const Header = () => {
                 }`}
               >
                 {item.label}
-                {pathname === item.href && (
-                  <motion.div
-                    layoutId="activeNav"
-                    className={styles.activeIndicator}
-                  />
-                )}
               </Link>
             ))}
             <a
@@ -88,65 +115,12 @@ export const Header = () => {
         </div>
       </nav>
 
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className={styles.mobileMenu}
-          >
-            <div className={styles.mobileMenuContent}>
-              {navItems.map((item, index) => (
-                <motion.div
-                  key={item.href}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                >
-                  <Link
-                    href={item.href}
-                    onClick={() => setIsOpen(false)}
-                    className={`${styles.mobileNavLink} ${
-                      pathname === item.href ? styles.active : ""
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                </motion.div>
-              ))}
-
-              <motion.div
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 }}
-                className={styles.mobileSocialSection}
-              >
-                <a
-                  href={INSTAGRAM_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setIsOpen(false)}
-                  className={styles.mobileSocialLink}
-                >
-                  <Instagram className={styles.socialIcon} />
-                  <span className={styles.mobileSocialText}>Instagram</span>
-                </a>
-                <a
-                  href={YOUTUBE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setIsOpen(false)}
-                  className={`${styles.mobileSocialLink} ${styles.youtube}`}
-                >
-                  <Youtube className={styles.socialIcon} />
-                  <span className={styles.mobileSocialText}>YouTube</span>
-                </a>
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <MobileMenu
+        isOpen={isOpen}
+        navItems={navItems}
+        pathname={pathname}
+        onClose={() => setIsOpen(false)}
+      />
     </header>
   );
 };
