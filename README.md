@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div align="center">
 
-## Getting Started
+# AK1 Photography Portfolio
 
-First, run the development server:
+Modern photography portfolio built with **Next.js App Router**, **TypeScript**, **SCSS modules**, and **Framer Motion**. It showcases featured genres, testimonials, an about page, and genre-specific galleries backed by content from Hygraph.
+
+</div>
+
+## ✨ Features
+
+- Dynamic hero that pulls the latest cover image from Hygraph
+- Genre grid with animated cards and dedicated masonry galleries
+- Lightbox viewer with swipe-friendly navigation
+- Testimonials and About sections powered by CMS content
+- Mobile-first navigation with Instagram/YouTube links
+- Theme-aware typography and custom SCSS design system
+
+## 🧱 Tech Stack
+
+- **Framework:** Next.js 16 (App Router), React 19, TypeScript
+- **Styling:** SCSS Modules, CSS custom properties
+- **Animations:** Framer Motion
+- **Data:** Hygraph (GraphQL) + `graphql-request`
+- **State/Data Fetching:** React Query (TanStack Query)
+- **Icons:** lucide-react
+
+## 🚀 Getting Started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Visit http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔑 Environment Variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Create `.env.local` with:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+NEXT_PUBLIC_HYGRAPH_ENDPOINT=...
+NEXT_PUBLIC_HYGRAPH_TOKEN=...
+```
 
-## Learn More
+## 📂 Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+  app/            # App Router routes (home, testimonials, about, genre pages)
+  components/     # UI building blocks (layout, cards, lightbox, skeletons)
+  hooks/          # React Query hooks for Hygraph content
+  lib/            # GraphQL queries, constants, utilities
+  styles/         # Global + variables SCSS
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📜 Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Command         | Description                  |
+| --------------- | ---------------------------- |
+| `npm run dev`   | Start dev server             |
+| `npm run build` | Production build             |
+| `npm run start` | Run production build locally |
+| `npm run lint`  | Lint with ESLint             |
 
-## Deploy on Vercel
+## 📦 Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The project is optimized for Vercel (Next.js hosting). Ensure env vars are configured in the Vercel dashboard before deploying.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+Maintained by Arron Kukadia · [Instagram](https://instagram.com/ak1photography) · [YouTube](https://www.youtube.com/@ak1photography)
