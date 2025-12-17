@@ -1,18 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Image from 'next/image'
-import { Quote } from 'lucide-react'
 import { useTestimonials } from '@/hooks/useTestimonials'
-
-const TestimonialSkeleton = () => (
-  <div className="rounded-lg border border-border bg-card p-8 animate-pulse">
-    <div className="mb-6 h-16 w-16 rounded-full bg-muted" />
-    <div className="mb-4 h-4 w-3/4 bg-muted rounded" />
-    <div className="mb-2 h-4 w-full bg-muted rounded" />
-    <div className="h-4 w-1/2 bg-muted rounded" />
-  </div>
-)
+import { TestimonialCard } from '@/components/cards/TestimonialCard'
+import { TestimonialSkeleton } from '@/components/skeletons/CardSkeleton'
 
 const TestimonialsPage = () => {
   const { data: testimonials, isLoading } = useTestimonials()
@@ -48,39 +39,7 @@ const TestimonialsPage = () => {
               </>
             ) : (
               testimonials?.map((testimonial, index) => (
-                <motion.div
-                  key={testimonial.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group relative rounded-lg border border-border bg-card p-8 transition-colors hover:border-primary/50"
-                >
-                  <Quote className="absolute top-6 right-6 h-8 w-8 text-primary/20" />
-                  
-                  <div className="mb-6 flex items-center gap-4">
-                    <div className="relative h-16 w-16 overflow-hidden rounded-full bg-muted">
-                      {testimonial.image && (
-                        <Image
-                          src={testimonial.image.url}
-                          alt={testimonial.name}
-                          fill
-                          sizes="64px"
-                          className="object-cover"
-                        />
-                      )}
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-medium">{testimonial.name}</h3>
-                    </div>
-                  </div>
-
-                  {testimonial.content?.text && (
-                    <p className="text-muted-foreground leading-relaxed">
-                      &ldquo;{testimonial.content.text}&rdquo;
-                    </p>
-                  )}
-                </motion.div>
+                <TestimonialCard key={testimonial.id} testimonial={testimonial} index={index} />
               ))
             )}
           </div>

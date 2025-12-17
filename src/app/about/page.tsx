@@ -4,29 +4,12 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { Camera, Instagram, Mail } from 'lucide-react'
 import { useAboutMe } from '@/hooks/useAboutMe'
+import { AboutSkeleton } from '@/components/skeletons/CardSkeleton'
 
 const AboutPage = () => {
   const { data: aboutMe, isLoading } = useAboutMe()
 
-  if (isLoading) {
-    return (
-      <div className="min-h-screen pt-20">
-        <div className="container mx-auto px-6 py-20">
-          <div className="mx-auto max-w-4xl">
-            <div className="flex flex-col gap-12 md:flex-row">
-              <div className="h-96 w-full rounded-lg bg-muted animate-pulse md:w-1/2" />
-              <div className="flex-1 space-y-4">
-                <div className="h-10 w-3/4 bg-muted rounded animate-pulse" />
-                <div className="h-4 w-full bg-muted rounded animate-pulse" />
-                <div className="h-4 w-full bg-muted rounded animate-pulse" />
-                <div className="h-4 w-2/3 bg-muted rounded animate-pulse" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    )
-  }
+  if (isLoading) return <AboutSkeleton />
 
   return (
     <div className="min-h-screen pt-20">

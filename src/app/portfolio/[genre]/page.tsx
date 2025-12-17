@@ -2,16 +2,14 @@
 
 import { useState } from 'react'
 import { useParams } from 'next/navigation'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowLeft, X, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 import { useGenreImages, usePortfolioCards } from '@/hooks/usePortfolio'
+import { Lightbox } from '@/components/Lightbox'
+import { ImageSkeleton } from '@/components/skeletons/CardSkeleton'
 import { GenreType } from '@/lib/types'
-
-const ImageSkeleton = () => (
-  <div className="aspect-square bg-muted animate-pulse" />
-)
 
 const GenrePage = () => {
   const params = useParams()
@@ -101,69 +99,16 @@ const GenrePage = () => {
         </div>
       </section>
 
-      <AnimatePresence>
-        {selectedIndex !== null && images && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4"
-            onClick={() => setSelectedIndex(null)}
-          >
-            <button
-              onClick={() => setSelectedIndex(null)}
-              className="absolute top-4 right-4 p-2 text-white/70 transition-colors hover:text-white"
-              aria-label="Close"
-            >
-              <X className="h-8 w-8" />
-            </button>
-
-            <button
-              onClick={(e) => {
-                e.stopPropagation()
-                handlePrev()
-              }}
-              className="absolute left-4 p-2 text-white/70 transition-colors hover:text-white"
-              aria-label="Previous"
-            >
-              <ChevronLeft className="h-10 w-10" />
-            </button>
-
-            <button
-              onClick={(e) => {
-                e.stopPropagation()
-                handleNext()
-              }}
-              className="absolute right-4 p-2 text-white/70 transition-colors hover:text-white"
-              aria-label="Next"
-            >
-              <ChevronRight className="h-10 w-10" />
-            </button>
-
-            <motion.div
-              key={selectedIndex}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              className="relative max-h-[90vh] max-w-[90vw]"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Image
-                src={images[selectedIndex].url}
-                alt={`${genre} photo ${selectedIndex + 1}`}
-                width={1400}
-                height={1000}
-                className="max-h-[90vh] w-auto object-contain"
-                priority
-              />
-            </motion.div>
-
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-sm text-white/50">
-              {selectedIndex + 1} / {images.length}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {images && (
+        <Lightbox
+          images={images}
+          selectedIndex={selectedIndex}
+          onClose={() => setSelectedIndex(null)}
+          onPrev={handlePrev}
+          onNext={handleNext}
+          altPrefix={genre}
+        />
+      )}
     </div>
   )
 }
