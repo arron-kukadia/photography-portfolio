@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Instagram, Mail } from 'lucide-react'
+import { INSTAGRAM_URL } from '@/lib/constants'
 
 export const Footer = () => (
   <footer className="border-t border-white/10 bg-black">
@@ -11,7 +12,7 @@ export const Footer = () => (
 
         <div className="flex items-center gap-8">
           <a
-            href="https://instagram.com"
+            href={INSTAGRAM_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="text-white/40 transition-colors hover:text-gold"

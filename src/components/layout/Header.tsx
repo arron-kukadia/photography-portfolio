@@ -4,7 +4,8 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Instagram } from 'lucide-react'
+import { INSTAGRAM_URL } from '@/lib/constants'
 
 const navItems = [
   { href: '/', label: 'Work' },
@@ -42,6 +43,15 @@ export const Header = () => {
                 )}
               </Link>
             ))}
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-4 text-white/60 transition-colors hover:text-gold"
+              aria-label="Instagram"
+            >
+              <Instagram className="h-5 w-5" />
+            </a>
           </div>
 
           <button
@@ -53,32 +63,57 @@ export const Header = () => {
           </button>
         </div>
 
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="overflow-hidden bg-black/95 backdrop-blur-lg md:hidden"
-            >
-              <div className="flex flex-col gap-6 py-8">
-                {navItems.map((item) => (
+      </nav>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="absolute left-0 right-0 top-24 z-40 border-t border-white/10 bg-black px-6 py-8 md:hidden"
+          >
+            <div className="flex flex-col gap-6">
+              {navItems.map((item, index) => (
+                <motion.div
+                  key={item.href}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                >
                   <Link
-                    key={item.href}
                     href={item.href}
                     onClick={() => setIsOpen(false)}
-                    className={`text-2xl font-extralight tracking-wider ${
+                    className={`text-xl font-light tracking-wider ${
                       pathname === item.href ? 'text-gold' : 'text-white/70'
                     }`}
                   >
                     {item.label}
                   </Link>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </nav>
+                </motion.div>
+              ))}
+              
+              <motion.div
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 }}
+                className="mt-4 border-t border-white/10 pt-6"
+              >
+                <a
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center gap-2 text-white/50 transition-colors hover:text-gold"
+                >
+                  <Instagram className="h-5 w-5" />
+                  <span className="text-sm">Instagram</span>
+                </a>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   )
 }

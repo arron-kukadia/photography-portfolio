@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { Camera, Instagram, Mail } from 'lucide-react'
 import { useAboutMe } from '@/hooks/useAboutMe'
 import { AboutSkeleton } from '@/components/skeletons/CardSkeleton'
+import { INSTAGRAM_URL } from '@/lib/constants'
 
 const AboutPage = () => {
   const { data: aboutMe, isLoading } = useAboutMe()
@@ -78,7 +79,7 @@ const AboutPage = () => {
 
                 <div className="mt-10 flex items-center gap-6">
                   <a
-                    href="https://instagram.com"
+                    href={INSTAGRAM_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-white/50 transition-colors hover:text-gold"
