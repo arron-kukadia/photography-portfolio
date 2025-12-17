@@ -45,15 +45,15 @@ const Home = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="mb-4 text-sm uppercase tracking-[0.4em] text-white/70"
+              className="mb-4 text-md font-semibold uppercase tracking-[0.4em] text-white/100"
             >
               Photography Portfolio
             </motion.p>
-            <h1 className="mb-6 text-6xl font-extralight tracking-tight text-white md:text-8xl lg:text-9xl">
-              Arron
-              <span className="block font-light text-gold">Kukadia</span>
+            <h1 className="mb-6 text-6xl font-light tracking-tight md:text-8xl lg:text-9xl">
+              <span className="text-white">Arron</span>
+              <span className="block font-normal text-gold">Kukadia</span>
             </h1>
-            <p className="mx-auto max-w-md text-lg font-light text-white/60">
+            <p className="mb-4 text-md font-semibold uppercase tracking-[0.4em] text-white/100">
               Capturing the extraordinary in every frame
             </p>
           </motion.div>
