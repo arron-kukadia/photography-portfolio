@@ -80,11 +80,11 @@ const AboutPage = () => {
                     <span className={styles.socialText}>Instagram</span>
                   </a>
                   <a
-                    href="mailto:hello@example.com"
+                    href="mailto:aksnaps1397@gmail.com"
                     className={styles.socialLink}
                   >
                     <Mail className={styles.socialIcon} />
-                    <span className={styles.socialText}>Contact</span>
+                    <span className={styles.socialText}>Email</span>
                   </a>
                 </div>
               </motion.div>
