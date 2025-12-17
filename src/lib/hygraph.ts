@@ -55,6 +55,17 @@ export const GET_TESTIMONIALS = gql`
   }
 `
 
+export const GET_COVER_IMAGE = gql`
+  query GetCoverImage {
+    coverimages(first: 1) {
+      id
+      image {
+        url
+      }
+    }
+  }
+`
+
 export const GET_ABOUT_ME = gql`
   query GetAboutMe {
     aboutMes(first: 1) {

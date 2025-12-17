@@ -31,7 +31,7 @@ export const Footer = () => (
       </div>
 
       <div className="mt-12 text-center text-xs uppercase tracking-wider text-white/30">
-        © {new Date().getFullYear()} Arron Kukadia Photography
+        © {new Date().getFullYear()} AK1Photography
       </div>
     </div>
   </footer>

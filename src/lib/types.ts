@@ -34,3 +34,8 @@ export type AboutMe = {
 }
 
 export type GenreType = 'landscapes' | 'portraits' | 'cityscapes' | 'wildlife'
+
+export type CoverImage = {
+  id: string
+  image: Asset
+}

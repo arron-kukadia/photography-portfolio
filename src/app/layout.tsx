@@ -17,8 +17,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Arron Kukadia Photography',
-    template: '%s | Arron Kukadia Photography',
+    default: 'AK1Photography',
+    template: '%s | AK1Photography',
   },
   description: 'Professional photography portfolio showcasing landscapes, portraits, cityscapes, and wildlife.',
 }

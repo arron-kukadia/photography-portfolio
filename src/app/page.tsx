@@ -3,13 +3,14 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { ChevronDown } from 'lucide-react'
-import { usePortfolioCards } from '@/hooks/usePortfolio'
+import { usePortfolioCards, useCoverImage } from '@/hooks/usePortfolio'
 import { PortfolioCard } from '@/components/cards/PortfolioCard'
 import { CardSkeleton } from '@/components/skeletons/CardSkeleton'
 
 const Home = () => {
   const { data: portfolioCards, isLoading } = usePortfolioCards()
-  const heroImage = portfolioCards?.[0]?.image?.url
+  const { data: coverImage } = useCoverImage()
+  const heroImage = coverImage?.image?.url || portfolioCards?.[0]?.image?.url
 
   return (
     <div>
