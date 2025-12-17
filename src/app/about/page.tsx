@@ -26,73 +26,71 @@ const AboutPage = () => {
           <h1 className={styles.title}>The person behind the lens.</h1>
         </motion.div>
 
-        <section className={styles.content}>
-          <div className={styles.container}>
-            <div className={styles.innerContainer}>
-              <div className={styles.flex}>
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: 0.2 }}
-                  className={styles.imageSection}
-                >
-                  <div className={styles.imageWrapper}>
-                    {aboutMe?.image && (
-                      <Image
-                        src={aboutMe.image.url}
-                        alt={aboutMe.name || "About me"}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className={styles.image}
-                        priority
-                      />
-                    )}
-                  </div>
-                  <div className={styles.imageBorder} />
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4, delay: 0.4 }}
-                  className={styles.textSection}
-                >
-                  <div className={styles.role}>
-                    <Camera className={styles.roleIcon} />
-                    <span className={styles.roleText}>Photographer</span>
-                  </div>
-
-                  <h2 className={styles.name}>{aboutMe?.name}</h2>
-
-                  {aboutMe?.content?.text && (
-                    <p className={styles.bio}>
-                      {aboutMe.content.text.replace(/\\n/g, "\n")}
-                    </p>
+        <div className={styles.container}>
+          <div className={styles.innerContainer}>
+            <div className={styles.flex}>
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: 0.2 }}
+                className={styles.imageSection}
+              >
+                <div className={styles.imageWrapper}>
+                  {aboutMe?.image && (
+                    <Image
+                      src={aboutMe.image.url}
+                      alt={aboutMe.name || "About me"}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className={styles.image}
+                      priority
+                    />
                   )}
+                </div>
+                <div className={styles.imageBorder} />
+              </motion.div>
 
-                  <div className={styles.socialLinks}>
-                    <a
-                      href={INSTAGRAM_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.socialLink}
-                    >
-                      <Instagram className={styles.socialIcon} />
-                      <span className={styles.socialText}>Instagram</span>
-                    </a>
-                    <a
-                      href="mailto:hello@example.com"
-                      className={styles.socialLink}
-                    >
-                      <Mail className={styles.socialIcon} />
-                      <span className={styles.socialText}>Contact</span>
-                    </a>
-                  </div>
-                </motion.div>
-              </div>
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: 0.4 }}
+                className={styles.textSection}
+              >
+                <div className={styles.role}>
+                  <Camera className={styles.roleIcon} />
+                  <span className={styles.roleText}>Photographer</span>
+                </div>
+
+                <h2 className={styles.name}>{aboutMe?.name}</h2>
+
+                {aboutMe?.content?.text && (
+                  <p className={styles.bio}>
+                    {aboutMe.content.text.replace(/\\n/g, "\n")}
+                  </p>
+                )}
+
+                <div className={styles.socialLinks}>
+                  <a
+                    href={INSTAGRAM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.socialLink}
+                  >
+                    <Instagram className={styles.socialIcon} />
+                    <span className={styles.socialText}>Instagram</span>
+                  </a>
+                  <a
+                    href="mailto:hello@example.com"
+                    className={styles.socialLink}
+                  >
+                    <Mail className={styles.socialIcon} />
+                    <span className={styles.socialText}>Contact</span>
+                  </a>
+                </div>
+              </motion.div>
             </div>
           </div>
-        </section>
+        </div>
       </section>
     </div>
   );
