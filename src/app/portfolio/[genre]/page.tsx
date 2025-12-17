@@ -35,24 +35,28 @@ const GenrePage = () => {
   }
 
   return (
-    <div className="min-h-screen pt-20">
-      <section className="px-6 py-12">
+    <div className="min-h-screen bg-background pt-32">
+      <section className="px-6 pb-16">
         <div className="container mx-auto">
           <Link
             href="/"
-            className="mb-8 inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-primary"
+            className="mb-8 inline-flex items-center gap-2 text-xs uppercase tracking-wider text-white/40 transition-colors hover:text-gold"
           >
             <ArrowLeft className="h-4 w-4" />
-            Back to Portfolio
+            Back to Collections
           </Link>
           
-          <motion.h1
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl font-light tracking-tight md:text-6xl"
           >
-            {currentCard?.genre || genre}
-          </motion.h1>
+            <p className="mb-2 text-xs uppercase tracking-[0.3em] text-gold">
+              Collection
+            </p>
+            <h1 className="text-5xl font-extralight tracking-tight md:text-7xl">
+              {currentCard?.genre || genre}
+            </h1>
+          </motion.div>
         </div>
       </section>
 

@@ -60,7 +60,9 @@ export const GET_ABOUT_ME = gql`
     aboutMes(first: 1) {
       id
       name
-      content
+      content {
+        text
+      }
       image {
         url
       }

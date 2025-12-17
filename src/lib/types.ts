@@ -27,7 +27,9 @@ export type Testimonial = {
 export type AboutMe = {
   id: string
   name: string
-  content: string
+  content: {
+    text: string
+  }
   image: Asset
 }
 

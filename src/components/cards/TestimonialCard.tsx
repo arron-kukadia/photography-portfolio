@@ -12,13 +12,13 @@ type TestimonialCardProps = {
 
 export const TestimonialCard = ({ testimonial, index }: TestimonialCardProps) => (
   <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
     viewport={{ once: true }}
-    transition={{ duration: 0.5, delay: index * 0.1 }}
-    className="group relative rounded-lg border border-border bg-card p-8 transition-colors hover:border-primary/50"
+    transition={{ duration: 0.6, delay: index * 0.05, ease: 'easeOut' }}
+    className="group relative rounded-xl border border-white/10 bg-white/5 p-8 backdrop-blur-sm transition-all hover:border-gold/30 hover:bg-white/10"
   >
-    <Quote className="absolute top-6 right-6 h-8 w-8 text-primary/20" />
+    <Quote className="absolute top-6 right-6 h-8 w-8 text-gold/20" />
 
     <div className="mb-6 flex items-center gap-4">
       <div className="relative h-16 w-16 overflow-hidden rounded-full bg-muted">
@@ -33,12 +33,12 @@ export const TestimonialCard = ({ testimonial, index }: TestimonialCardProps) =>
         )}
       </div>
       <div>
-        <h3 className="text-lg font-medium">{testimonial.name}</h3>
+        <h3 className="text-lg font-medium text-white">{testimonial.name}</h3>
       </div>
     </div>
 
     {testimonial.content && (
-      <p className="text-muted-foreground leading-relaxed">
+      <p className="text-white/70 leading-relaxed">
         &ldquo;{testimonial.content}&rdquo;
       </p>
     )}

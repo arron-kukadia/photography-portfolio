@@ -12,25 +12,28 @@ type PortfolioCardProps = {
 
 export const PortfolioCard = ({ card, index }: PortfolioCardProps) => (
   <motion.div
-    initial={{ opacity: 0, y: 20 }}
+    initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
-    transition={{ duration: 0.5, delay: index * 0.1 }}
+    transition={{ duration: 0.7, delay: index * 0.15 }}
   >
-    <Link href={`/portfolio/${card.route}`} className="group block">
-      <div className="relative aspect-[4/5] overflow-hidden bg-muted">
+    <Link href={`/portfolio/${card.route}`} className="group relative block">
+      <div className="relative aspect-[4/3] overflow-hidden">
         <Image
           src={card.image.url}
           alt={card.genre}
           fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-          className="object-cover transition-transform duration-700 group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className="object-cover transition-all duration-700 group-hover:scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-        <div className="absolute inset-0 flex items-end p-6">
-          <div className="translate-y-4 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-            <h3 className="text-2xl font-light text-white">{card.genre}</h3>
-            <p className="mt-1 text-sm text-white/70">View Gallery →</p>
+        <div className="absolute inset-0 bg-black/30 transition-all duration-500 group-hover:bg-black/50" />
+        
+        <div className="absolute inset-0 flex items-end p-8">
+          <div>
+            <h3 className="text-3xl font-light text-white md:text-4xl">
+              {card.genre}
+            </h3>
+            <div className="mt-4 h-px w-0 bg-gold transition-all duration-500 group-hover:w-24" />
           </div>
         </div>
       </div>

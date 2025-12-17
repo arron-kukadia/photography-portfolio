@@ -1,44 +1,95 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
+import { ChevronDown } from 'lucide-react'
 import { usePortfolioCards } from '@/hooks/usePortfolio'
 import { PortfolioCard } from '@/components/cards/PortfolioCard'
 import { CardSkeleton } from '@/components/skeletons/CardSkeleton'
 
 const Home = () => {
   const { data: portfolioCards, isLoading } = usePortfolioCards()
+  const heroImage = portfolioCards?.[0]?.image?.url
 
   return (
-    <div className="pt-20">
-      <section className="relative flex min-h-[60vh] items-center justify-center px-6">
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/50 to-background" />
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="relative z-10 text-center"
-        >
-          <h1 className="mb-6 text-5xl font-light tracking-tight md:text-7xl">
-            Capturing <span className="text-primary">Moments</span>
-          </h1>
-          <p className="mx-auto max-w-xl text-lg text-muted-foreground">
-            Professional photography showcasing the beauty of landscapes, portraits, cityscapes, and wildlife.
-          </p>
-        </motion.div>
+    <div>
+      <section className="relative h-screen w-full overflow-hidden">
+        {heroImage && (
+          <motion.div
+            initial={{ scale: 1.1 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 1.5, ease: 'easeOut' }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={heroImage}
+              alt="Hero"
+              fill
+              priority
+              quality={90}
+              sizes="100vw"
+              className="object-cover"
+            />
+          </motion.div>
+        )}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black" />
+        
+        <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3 }}
+          >
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.5 }}
+              className="mb-4 text-sm uppercase tracking-[0.4em] text-white/70"
+            >
+              Photography Portfolio
+            </motion.p>
+            <h1 className="mb-6 text-6xl font-extralight tracking-tight text-white md:text-8xl lg:text-9xl">
+              Arron
+              <span className="block font-light text-gold">Kukadia</span>
+            </h1>
+            <p className="mx-auto max-w-md text-lg font-light text-white/60">
+              Capturing the extraordinary in every frame
+            </p>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.2 }}
+            className="absolute bottom-12"
+          >
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              <ChevronDown className="h-8 w-8 text-white/50" />
+            </motion.div>
+          </motion.div>
+        </div>
       </section>
 
-      <section className="px-6 py-20">
+      <section className="relative bg-background px-6 py-32">
         <div className="container mx-auto">
-          <motion.h2
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-12 text-center text-sm font-light uppercase tracking-[0.3em] text-muted-foreground"
+            className="mb-20 text-center"
           >
-            Explore My Work
-          </motion.h2>
+            <h2 className="mb-4 text-4xl font-extralight tracking-tight md:text-5xl">
+              Featured <span className="text-gold">Collections</span>
+            </h2>
+            <p className="mx-auto max-w-lg text-muted-foreground">
+              Explore my portfolio across different genres of photography
+            </p>
+          </motion.div>
 
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:gap-6">
             {isLoading ? (
               <>
                 <CardSkeleton />
