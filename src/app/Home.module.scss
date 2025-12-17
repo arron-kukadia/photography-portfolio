@@ -1,6 +1,5 @@
 @use "../styles/variables" as *;
 
-// Hero section
 .hero {
   position: relative;
   height: 100vh;
@@ -94,14 +93,13 @@
   color: rgba($foreground, 0.5);
 }
 
-// Collections section
 .collections {
   position: relative;
   background: $background;
-  padding: 4rem 1.5rem;
+  padding: 3rem 1.5rem;
 
   @include respond-to(md) {
-    padding: 8rem 1.5rem;
+    padding: 6rem 1.5rem;
   }
 }
 

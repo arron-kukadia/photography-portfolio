@@ -4,12 +4,31 @@
   min-height: 100vh;
   background: $background;
   padding-top: 8rem;
+  max-width: 1280px;
+  margin: 0 auto;
 }
 
-// Header section
 .header {
-  padding: 5rem 1.5rem;
-  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.label {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: $gold;
+}
+
+.title {
+  margin-bottom: 1.5rem;
+  font-size: 3rem;
+  font-weight: 200;
+  letter-spacing: -0.02em;
+
+  @include respond-to(md) {
+    font-size: 4.5rem;
+  }
 }
 
 .title {
@@ -34,7 +53,6 @@
   color: rgba($foreground, 0.5);
 }
 
-// Content section
 .content {
   padding: 0 1.5rem 5rem;
 }
@@ -61,7 +79,6 @@
   }
 }
 
-// Image section
 .imageSection {
   position: relative;
   width: 100%;
@@ -96,7 +113,6 @@
   pointer-events: none;
 }
 
-// Text section
 .textSection {
   flex: 1;
 }
@@ -138,7 +154,6 @@
   white-space: pre-line;
 }
 
-// Social links
 .socialLinks {
   display: flex;
   align-items: center;

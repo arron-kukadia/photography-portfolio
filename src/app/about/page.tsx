@@ -21,10 +21,8 @@ const AboutPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
         >
-          <h1 className={styles.title}>
-            About <span className={styles.titleAccent}>Me</span>
-          </h1>
-          <p className={styles.subtitle}>The person behind the lens.</p>
+          <p className={styles.label}>About Me</p>
+          <h1 className={styles.title}>The person behind the lens.</h1>
         </motion.div>
       </section>
 
