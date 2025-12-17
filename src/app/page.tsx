@@ -73,13 +73,13 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="relative bg-background px-6 py-32">
+      <section className="relative bg-background px-6 py-16 md:py-32">
         <div className="container mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-20 text-center"
+            className="mb-10 text-center md:mb-20"
           >
             <h2 className="mb-4 text-4xl font-extralight tracking-tight md:text-5xl">
               Featured <span className="text-gold">Collections</span>

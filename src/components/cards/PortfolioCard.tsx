@@ -28,12 +28,12 @@ export const PortfolioCard = ({ card, index }: PortfolioCardProps) => (
         />
         <div className="absolute inset-0 bg-black/30 transition-all duration-500 group-hover:bg-black/50" />
         
-        <div className="absolute inset-0 flex items-end p-8">
-          <div>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center">
             <h3 className="text-3xl font-light text-white md:text-4xl">
               {card.genre}
             </h3>
-            <div className="mt-4 h-px w-0 bg-gold transition-all duration-500 group-hover:w-24" />
+            <div className="mx-auto mt-4 h-px w-0 bg-gold transition-all duration-500 group-hover:w-24" />
           </div>
         </div>
       </div>
