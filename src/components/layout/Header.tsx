@@ -132,7 +132,7 @@ export const Header = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setIsOpen(false)}
-                  className="flex items-center gap-2 text-white/50 transition-colors hover:text-gold"
+                  className="flex mt-4 items-center gap-2 text-white/50 transition-colors hover:text-gold"
                 >
                   <Youtube className="h-5 w-5" />
                   <span className="text-sm">YouTube</span>
